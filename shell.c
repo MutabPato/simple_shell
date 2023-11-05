@@ -11,18 +11,33 @@ int main(void)
 	char *input = NULL;
 	size_t len = 0;
 	ssize_t read;
-	char *argv[2];
+	char *argv[20];
 	pid_t pid;
+	char *token;
+	char *delim = " ";
+	int i = 0;
 
 	while (1)
 	{
 		printf("($) ");
 		read = getline(&input, &len, stdin);
+		
+		if (input == NULL)
+			printf("error\n");
+
 		if (read != -1)
 		{
-			input[read - 1] = '\0';
-			argv[0] = input;
-			argv[1] = NULL;
+			input[strcspn(input, "\n")] = '\0';
+			token = strtok(input, delim);
+
+ 			while (token != NULL)
+ 			{
+			argv[i] = token;
+ 			token = strtok(NULL, delim);
+			i++;
+			}
+			argv[i] = NULL;
+
 			pid = fork();
 			if (pid == -1)
 				printf("error\n");
