@@ -14,7 +14,7 @@ void exec_ve(char **argv)
 /**
  * tokenize - tokenizes the input
  *
- * @input: string read from stdin 
+ * @input: string read from stdin
  * Return: array of argumrnts.
  */
 char **tokenize(char *input)
@@ -36,13 +36,14 @@ char **tokenize(char *input)
 	}
 	argv[i] = NULL;
 
+	return (argv);
+
 	for (i = 0; i < 20; i++)
 	{
 		if (argv[i] != NULL)
 			free(argv[i]);
 	}
 	free(argv);
-	return (argv);
 }
 /**
  * main - unix command line interpreter
