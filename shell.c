@@ -1,10 +1,11 @@
 #include "shell.h"
+
 /**
  * exec_ve - executes the command
  * @argv: array of arguments
  */
 
-void exec_ve(char *argv[])
+void exec_ve(char **argv)
 {
 	if ((execve(argv[0], argv, NULL) == -1))
 		printf("No such file or directory\n");
@@ -21,16 +22,26 @@ char **tokenize(char *input)
 	const char delim[] = " ";
 	char *token;
 	int  i = 0;
-	char *argv[20];
+	char **argv = NULL;
 
+	argv = (char **)malloc(sizeof(char *) * 20);
+	if (argv == NULL)
+		return (NULL);
 	token = strtok(input, delim);
 	while (token != NULL)
 	{
-		argv[i] = token;
+		argv[i] = strdup(token);
 		token = strtok(NULL, delim);
 		i++;
 	}
 	argv[i] = NULL;
+
+	for (i = 0; i < 20; i++)
+	{
+		if (argv[i] != NULL)
+			free(argv[i]);
+	}
+	free(argv);
 	return (argv);
 }
 /**
@@ -42,7 +53,7 @@ char **tokenize(char *input)
 int main(void)
 {
 	ssize_t read;
-	char *input = NULL, *argv[20];
+	char *input = NULL, **argv = NULL;
 	size_t len = 0;
 	pid_t pid;
 
@@ -50,10 +61,10 @@ int main(void)
 	{
 		printf("($): ");
 		read = getline(&input, &len, stdin);
-		if (read != 1)
+		if (read != -1)
 		{
 			input[read - 1] = '\0';
-			argv[20] = tokenize(input);
+			argv = tokenize(input);
 
 			pid = fork();
 			if (pid == -1)
