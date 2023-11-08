@@ -66,6 +66,7 @@ int main(void)
 		{
 			input[read - 1] = '\0';
 			argv = tokenize(input);
+			argv[0] = get_path(argv);
 
 			pid = fork();
 			if (pid == -1)

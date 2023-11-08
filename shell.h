@@ -7,5 +7,9 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <sys/stat.h>
+
+void _stat(char *av);
+char *get_path(char **argv);
 
 #endif /* SHELL_H */
