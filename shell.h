@@ -9,6 +9,7 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 
+void is_env(char **argv);
 char **tokenize(char *input);
 void exec_ve(char **argv);
 void is_exit(char **argv);

@@ -26,6 +26,7 @@ char **tokenize(char *input)
 	argv[i] = NULL;
 	
 	is_exit(argv);
+	is_env(argv);
 
 	return (argv);
 
