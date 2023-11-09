@@ -24,7 +24,7 @@ char *get_path(char **argv)
 			paths_copy = strdup(paths);
 			token = strtok(paths_copy, ":");
 			argv_len = strlen(argv[0]);
-			while (paths_copy != NULL)
+			while (token)
 			{
 				path_len = strlen(token);
 				path_name = malloc(argv_len + path_len + 2);
@@ -43,6 +43,7 @@ char *get_path(char **argv)
 					free(path_name);
 					token = strtok(NULL, ":");
 				}
+
 			}
 			free(paths_copy);
 		}
