@@ -16,6 +16,7 @@ int main(void)
 	while (1)
 	{
 		printf("($): ");
+		fflush(stdout);
 		read = getline(&input, &len, stdin);
 		
 		if (read == -1)
