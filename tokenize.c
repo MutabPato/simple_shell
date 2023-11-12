@@ -24,9 +24,6 @@ char **tokenize(char *input)
 		i++;
 	}
 	argv[i] = NULL;
-	
-	is_exit(argv);
-	is_env(argv);
 
 	return (argv);
 
@@ -35,4 +32,5 @@ char **tokenize(char *input)
 		if (argv[i] != NULL)
 			free(argv[i]);
 	}
+	free(argv);
 }

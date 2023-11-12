@@ -7,8 +7,6 @@
  * Return: nothing.
  */
 
-extern char **environ;
-
 void is_env(char **argv)
 {
 	int i;

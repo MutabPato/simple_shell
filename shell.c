@@ -17,10 +17,21 @@ int main(void)
 	{
 		printf("($): ");
 		read = getline(&input, &len, stdin);
-		if (read != -1)
+		
+		if (read == -1)
+		{
+			printf("Error reading input\n");
+			continue;
+		}
+		if (read == 0)
+			continue;
+		
+		else
 		{
 			input[read - 1] = '\0';
 			argv = tokenize(input);
+			is_exit(argv);
+			is_env(argv);
 			argv[0] = get_path(argv);
 
 			pid = fork();
@@ -33,8 +44,6 @@ int main(void)
 			else
 				wait(NULL);
 		}
-		else
-			printf("Error reading input\n");
 
 	}
 	free(input);
