@@ -18,7 +18,6 @@ int main(void)
 		printf("($): ");
 		fflush(stdout);
 		read = getline(&input, &len, stdin);
-		
 		if (read == -1)
 		{
 			printf("Error reading input\n");
@@ -26,7 +25,6 @@ int main(void)
 		}
 		if (read == 0)
 			continue;
-		
 		else
 		{
 			input[read - 1] = '\0';
@@ -41,14 +39,9 @@ int main(void)
 
 			else if (pid == 0)
 				exec_ve(argv);
-
 			else
-			{
 				wait(NULL);
-				return (-1);
-			}
 		}
-
 	}
 	free(input);
 	return (0);
