@@ -43,7 +43,10 @@ int main(void)
 				exec_ve(argv);
 
 			else
+			{
 				wait(NULL);
+				return (-1);
+			}
 		}
 
 	}
