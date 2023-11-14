@@ -14,7 +14,7 @@ char **tokenize(char *input)
 	int  i = 0;
 	char **argv = NULL;
 
-	argv = (char **)malloc(sizeof(char *) * 20);
+	argv = (char **)malloc(sizeof(char *) * strlen(input) + 1);
 	if (argv == NULL)
 		return (NULL);
 	token = str_tok(input, delim);
@@ -24,14 +24,8 @@ char **tokenize(char *input)
 		token = str_tok(NULL, delim);
 		i++;
 	}
+	free(token);
 	argv[i] = NULL;
 	
 	return (argv);
-
-	for (i = 0; i < 20; i++)
-	{
-		if (argv[i] != NULL)
-			free(argv[i]);
-	}
-	free(argv);
 }

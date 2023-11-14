@@ -9,6 +9,8 @@
 
 void is_exit(char **argv)
 {
+	if (argv == NULL || argv[0] == NULL)
+		return;
 	if ((strcmp(argv[0], "exit") == 0))
 	{
 		printf("exit\n\n\nDisconnected\n");
