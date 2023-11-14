@@ -16,5 +16,6 @@ char **tokenize(char *input);
 void exec_ve(char **argv);
 void is_exit(char **argv);
 char *get_path(char **argv);
+char *str_tok(char *str, const char *delim);
 
 #endif /* SHELL_H */

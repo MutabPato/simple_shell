@@ -2,10 +2,11 @@
 
 /**
  * tokenize - tokenizes the input
- *
  * @input: string read from stdin
+ *
  * Return: array of argumrnts.
  */
+
 char **tokenize(char *input)
 {
 	const char delim[] = " ";
@@ -16,11 +17,11 @@ char **tokenize(char *input)
 	argv = (char **)malloc(sizeof(char *) * 20);
 	if (argv == NULL)
 		return (NULL);
-	token = strtok(input, delim);
+	token = str_tok(input, delim);
 	while (token != NULL)
 	{
 		argv[i] = strdup(token);
-		token = strtok(NULL, delim);
+		token = str_tok(NULL, delim);
 		i++;
 	}
 	argv[i] = NULL;
