@@ -36,5 +36,5 @@ char *str_tok(char *str, const char *delim)
 	*token = '\0';
 	token++;
 	}
-	return (token_start);
+	return (strdup(token_start));
 }

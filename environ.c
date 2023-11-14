@@ -11,7 +11,7 @@ void is_env(char **argv)
 {
 	int i;
 
-	if (argv == NULL || argv[0] == NULL)
+	if (argv == NULL || argv[0] == NULL || *argv[0] == '\0')
 		return;
 
 	if ((strcmp(argv[0], "env") == 0))

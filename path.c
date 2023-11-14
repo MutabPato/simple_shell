@@ -9,9 +9,12 @@
 
 char *get_path(char **argv)
 {
-	char *paths, *paths_copy, *token, *path_name;
+	char *paths, *paths_copy, *token, *path_name = NULL;
 	int argv_len, path_len;
 	struct stat st;
+
+	if (argv == NULL || argv[0] == NULL)
+		return (NULL);
 
 	if (stat(argv[0], &st) == 0)
 		return (argv[0]);
@@ -23,11 +26,13 @@ char *get_path(char **argv)
 		{
 			paths_copy = strdup(paths);
 			token = strtok(paths_copy, ":");
-			argv_len = strlen(argv[0]);
+			argv_len = (argv[0] != NULL) ? strlen(argv[0]) : 0;
 			while (token)
 			{
-				path_len = strlen(token);
+				path_len = (token != NULL) ? strlen(token) : 0;
 				path_name = malloc(argv_len + path_len + 2);
+				if (path_name == NULL)
+					return (NULL);
 				strcpy(path_name, token);
 				strcat(path_name, "/");
 				strcat(path_name, argv[0]);

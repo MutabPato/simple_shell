@@ -9,7 +9,7 @@
 
 void is_exit(char **argv)
 {
-	if (argv == NULL || argv[0] == NULL)
+	if (argv == NULL || argv[0] == NULL || *argv[0] == '\0')
 		return;
 	if ((strcmp(argv[0], "exit") == 0))
 	{

@@ -20,12 +20,12 @@ char **tokenize(char *input)
 	token = str_tok(input, delim);
 	while (token != NULL)
 	{
-		argv[i] = strdup(token);
+		argv[i] = token; /*strdup(token);*/
 		token = str_tok(NULL, delim);
 		i++;
 	}
-	free(token);
 	argv[i] = NULL;
-	
+
 	return (argv);
+
 }
