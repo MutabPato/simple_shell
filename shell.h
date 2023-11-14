@@ -15,7 +15,6 @@ void is_env(char **argv);
 char **tokenize(char *input);
 void exec_ve(char **argv);
 void is_exit(char **argv);
-void _stat(char *av);
 char *get_path(char **argv);
 
 #endif /* SHELL_H */

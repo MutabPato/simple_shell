@@ -24,15 +24,16 @@ int main(void)
 			printf("Error reading input\n");
 			continue;
 		}
-		if (read == 0)
+		if (read == 0 || input[0] == '\0')
 			continue;
-		
+			
 		else
 		{
 			input[read - 1] = '\0';
 			argv = tokenize(input);
 			is_exit(argv);
 			is_env(argv);
+			if (argv[0] != NULL){ /*indent here*/
 			argv[0] = get_path(argv);
 
 			pid = fork();
@@ -45,8 +46,8 @@ int main(void)
 			else
 			{
 				wait(NULL);
-				return (-1);
 			}
+			}/*indent here*/
 		}
 
 	}

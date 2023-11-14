@@ -31,7 +31,6 @@ char *get_path(char **argv)
 				strcpy(path_name, token);
 				strcat(path_name, "/");
 				strcat(path_name, argv[0]);
-				strcat(path_name, "\0");
 
 				if (stat(path_name, &st) == 0)
 				{
