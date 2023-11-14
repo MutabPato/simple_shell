@@ -9,9 +9,10 @@
 int main(void)
 {
 	ssize_t read;
-	char *input = NULL, **argv = NULL;
+	char *input = NULL, **argv = NULL, *path;
 	size_t len = 0;
 	pid_t pid;
+	int i;
 
 	while (1)
 	{
@@ -31,7 +32,11 @@ int main(void)
 			argv = tokenize(input);
 			is_exit(argv);
 			is_env(argv);
-			argv[0] = get_path(argv);
+			path = get_path(argv);
+			if (path != NULL)
+				argv[0] = path;
+			else
+				printf("Error getting path\n");
 
 			pid = fork();
 			if (pid == -1)
@@ -41,8 +46,12 @@ int main(void)
 				exec_ve(argv);
 			else
 				wait(NULL);
+			for (i = 0; argv[i] != NULL; i++)
+				free(argv[i]);
 		}
 	}
 	free(input);
+	/* for (i = 0; argv[i] != NULL; i++)
+		free(argv[i]); */
 	return (0);
 }
