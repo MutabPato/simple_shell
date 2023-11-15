@@ -30,7 +30,10 @@ char *get_path(char **argv)
 		path_len = strlen(token);
 		path_name = malloc(argv_len + path_len + 2);
 		if (path_name == NULL)
+		{
+			free(paths_copy);
 			return (NULL);
+		}
 		strcpy(path_name, token);
 		strcat(path_name, "/");
 		strcat(path_name, argv[0]);
@@ -39,11 +42,8 @@ char *get_path(char **argv)
 			free(paths_copy);
 			return (path_name);
 		}
-		else
-		{
-			free(path_name);
-			token = strtok(NULL, ":");
-		}
+		free(path_name);
+		token = strtok(NULL, ":");
 	}
 	free(paths_copy);
 	return (NULL);
