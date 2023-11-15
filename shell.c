@@ -12,11 +12,10 @@ int main(void)
 	char *input = NULL, **argv = NULL, *path;
 	size_t len = 0;
 	pid_t pid;
-	int i;
 
 	while (1)
 	{
-		display_prompt;
+		display_prompt();
 		read = getline(&input, &len, stdin);
 		if (read > 1)
 		{
@@ -36,17 +35,12 @@ int main(void)
 				exec_ve(argv);
 			else
 				wait(NULL);
-			if (argv != NULL)
-			{
-				for (i = 0; argv[i] != NULL; i++)
-					free(argv[i]);
-				free(argv);
-			}
+
+			free_memory(NULL, argv);
 		}
 		else if (read == -1 || read == 0)
 			break;
 	}
-	if (input != NULL)
-		free(input);
+	free_memory(input, NULL);
 	return (0);
 }

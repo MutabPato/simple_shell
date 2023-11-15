@@ -18,5 +18,6 @@ void exec_ve(char **argv);
 void is_exit(char **argv);
 char *get_path(char **argv);
 char *str_tok(char *str, const char *delim);
+void free_memory(__attribute__((unused)) char *input, char **argv);
 
 #endif /* SHELL_H */
