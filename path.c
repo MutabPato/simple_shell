@@ -15,42 +15,36 @@ char *get_path(char **argv)
 
 	if (argv == NULL || argv[0] == NULL)
 		return (NULL);
-
 	if (stat(argv[0], &st) == 0)
 		return (argv[0]);
-
-	else
+	paths = getenv("PATH");
+	if (!paths)
+		return (NULL);
+	paths_copy = strdup(paths);
+	if (!paths_copy)
+		return (NULL);
+	argv_len = strlen(argv[0]);
+	token = strtok(paths_copy, ":");
+	while (token)
 	{
-		paths = getenv("PATH");
-		if (paths)
+		path_len = strlen(token);
+		path_name = malloc(argv_len + path_len + 2);
+		if (path_name == NULL)
+			return (NULL);
+		strcpy(path_name, token);
+		strcat(path_name, "/");
+		strcat(path_name, argv[0]);
+		if (stat(path_name, &st) == 0)
 		{
-			paths_copy = strdup(paths);
-			token = strtok(paths_copy, ":");
-			argv_len = (argv[0] != NULL) ? strlen(argv[0]) : 0;
-			while (token)
-			{
-				path_len = (token != NULL) ? strlen(token) : 0;
-				path_name = malloc(argv_len + path_len + 2);
-				if (path_name == NULL)
-					return (NULL);
-				strcpy(path_name, token);
-				strcat(path_name, "/");
-				strcat(path_name, argv[0]);
-
-				if (stat(path_name, &st) == 0)
-				{
-					free(paths_copy);
-					return (path_name);
-				}
-				else
-				{
-					free(path_name);
-					token = strtok(NULL, ":");
-				}
-
-			}
 			free(paths_copy);
+			return (path_name);
+		}
+		else
+		{
+			free(path_name);
+			token = strtok(NULL, ":");
 		}
 	}
+	free(paths_copy);
 	return (NULL);
 }

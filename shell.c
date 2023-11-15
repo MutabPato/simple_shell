@@ -16,12 +16,9 @@ int main(void)
 
 	while (1)
 	{
-		printf("($): ");
-		fflush(stdout);
+		display_prompt;
 		read = getline(&input, &len, stdin);
-		if (read == -1 || read == 0)
-			break;
-		else
+		if (read > 1)
 		{
 			input[read - 1] = '\0';
 			argv = tokenize(input);
@@ -46,6 +43,8 @@ int main(void)
 				free(argv);
 			}
 		}
+		else if (read == -1 || read == 0)
+			break;
 	}
 	if (input != NULL)
 		free(input);

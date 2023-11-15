@@ -9,6 +9,7 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 
+void display_prompt(void);
 extern char **environ;
 ssize_t get_line(char **input, size_t *len, FILE *file);
 void is_env(char **argv);
