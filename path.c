@@ -42,7 +42,6 @@ char *get_path(char **argv)
 		free(path_name);
 		token = strtok(NULL, ":");
 	}
-	free(path_name);
 	free(paths_copy);
 	return (NULL);
 }

@@ -8,6 +8,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
+#include <stdbool.h>
 
 void display_prompt(void);
 extern char **environ;
@@ -19,5 +20,6 @@ void is_exit(char **argv, char *input);
 char *get_path(char **argv);
 char *str_tok(char *str, const char *delim);
 void free_memory(char *input, char **argv);
+bool is_all_spaces(char *input, ssize_t read);
 
 #endif /* SHELL_H */

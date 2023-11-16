@@ -2,23 +2,16 @@
 
 /**
  * free_memory - frees allocated memory.
- * @input - command line argument
- * @argv - array of ppp
+ * @input: user input
+ * @argv: array of pointers to strings
  *
  * Return: void
  */
 
 void free_memory(char *input, char **argv)
 {
-	int i;
-
 	if (input != NULL)
 		free(input);
 
-	if (argv != NULL)
-	{
-		for (i = 0; argv[i] != NULL; i++)
-			free(argv[i]);
-	}
 	free(argv);
 }

@@ -2,7 +2,8 @@
 
 /**
  * is_exit - causes normal process termination
- * @argv: input
+ * @argv: array of pointers to strings
+ * @input: user input
  *
  * Return: nothing.
  */
