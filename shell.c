@@ -28,14 +28,17 @@ int main(void)
 			argv[0] = get_path(argv);
 			if (argv[0] == NULL)
 				perror("Error: ");
-			pid = fork();
-			if (pid == -1)
-				exit(-1);
-			else if (pid == 0)
-				exec_ve(argv);
 			else
-				wait(NULL);
-			free(argv[0]);
+			{
+				pid = fork();
+				if (pid == -1)
+					exit(-1);
+				else if (pid == 0)
+					exec_ve(argv);
+				else
+					wait(NULL);
+				free(argv[0]);
+			}
 			free(argv);
 			/*free_memory(NULL, argv);*/
 		}
