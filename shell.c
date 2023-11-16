@@ -27,7 +27,10 @@ int main(void)
 			is_env(argv);
 			argv[0] = get_path(argv);
 			if (argv[0] == NULL)
+			{
 				perror("Error: ");
+				continue;
+			}
 			pid = fork();
 			if (pid == -1)
 				exit(-1);

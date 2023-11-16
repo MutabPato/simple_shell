@@ -15,8 +15,8 @@ char *get_path(char **argv)
 
 	if (argv == NULL || argv[0] == NULL)
 		return (NULL);
-	if (stat(argv[0], &st) == 0)
-		return (argv[0]);
+	/*if (stat(argv[0], &st) == 0)
+		return (argv[0]);*/
 	paths = getenv("PATH");
 	if (!paths)
 		return (NULL);
@@ -43,5 +43,7 @@ char *get_path(char **argv)
 		token = strtok(NULL, ":");
 	}
 	free(paths_copy);
+	if (access(argv[0], X_OK) == 0)
+		return (argv[0]);
 	return (NULL);
 }
