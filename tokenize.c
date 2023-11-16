@@ -20,7 +20,7 @@ char **tokenize(char *input)
 	token = strtok(input, delim);
 	while (token != NULL)
 	{
-		argv[i] = (token);
+		argv[i] = token;
 		token = strtok(NULL, delim);
 		i++;
 	}

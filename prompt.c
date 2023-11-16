@@ -8,6 +8,7 @@
 
 void display_prompt(void)
 {
-	printf("($): ");
+	if (isatty(STDIN_FILENO))
+		printf("($)");
 	fflush(stdout);
 }

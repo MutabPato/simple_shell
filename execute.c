@@ -9,7 +9,7 @@ void exec_ve(char **argv)
 {
 	if ((execve(argv[0], argv, NULL) == -1))
 	{
-		free_memory(NULL, argv);
+		/*free_memory(NULL, argv);*/
 		exit(-1);
 	}
 }
