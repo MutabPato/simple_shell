@@ -15,9 +15,9 @@ ssize_t get_line(char **input, size_t *len, FILE *file);
 void is_env(char **argv);
 char **tokenize(char *input);
 void exec_ve(char **argv);
-void is_exit(char **argv);
+void is_exit(char **argv, char *input);
 char *get_path(char **argv);
 char *str_tok(char *str, const char *delim);
-void free_memory(__attribute__((unused)) char *input, char **argv);
+void free_memory(char *input, char **argv);
 
 #endif /* SHELL_H */

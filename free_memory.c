@@ -2,8 +2,8 @@
 
 /**
  * free_memory - frees allocated memory.
- * @input: command line argument
- * @argv: array of pointers to strings
+ * @input - command line argument
+ * @argv - array of ppp
  *
  * Return: void
  */

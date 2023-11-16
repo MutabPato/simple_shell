@@ -21,7 +21,7 @@ int main(void)
 		{
 			input[read - 1] = '\0';
 			argv = tokenize(input);
-			is_exit(argv);
+			is_exit(argv, input);
 			is_env(argv);
 			path = get_path(argv);
 			if (path != NULL)
