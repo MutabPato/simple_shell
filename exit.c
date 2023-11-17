@@ -10,11 +10,16 @@
 
 void is_exit(char **argv, char *input)
 {
+	int i;
+
 	if (argv == NULL || argv[0] == NULL || *argv[0] == '\0')
 		return;
-	if ((strcmp(argv[0], "exit") == 0))
+	for (i = 0; argv[i] != NULL; i++)
 	{
-		free_memory(input, argv);
-		exit(0);
+		if (strcmp(argv[i], "exit") == 0)
+		{
+			free_memory(input, argv);
+			exit(0);
+		}
 	}
 }

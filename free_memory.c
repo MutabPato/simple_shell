@@ -13,5 +13,6 @@ void free_memory(char *input, char **argv)
 	if (input != NULL)
 		free(input);
 
-	free(argv);
+	if (argv != NULL)
+		free(argv);
 }
