@@ -11,5 +11,6 @@ void exec_ve(char **argv)
 	{
 		perror("execve");
 		/*free_memory(NULL, argv);*/
+		exit(EXIT_FAILURE);
 	}
 }
